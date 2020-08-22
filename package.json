@@ -1,0 +1,22 @@
+{
+  "name": "m14-logger",
+  "version": "1.0.0",
+  "description": "A simple command line logging tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx mocha tests/ --ui bdd --reporter list --timeout 5000 --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/M14Industries/m14-logger.git"
+  },
+  "author": "John Kershaw",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/M14Industries/m14-logger/issues"
+  },
+  "homepage": "https://github.com/M14Industries/m14-logger#readme",
+  "devDependencies": {
+    "mocha": "^8.1.1"
+  }
+}
