@@ -14,6 +14,10 @@ Each function has a property, an assigned value, and optional tags. The tag is a
 l.count(property, value, tags);
 ```
 
+### Returning the log string
+
+To return the string value of the log, instead of sending it to the console log, the functions `returnCount`, `returnMeasure`, and `returnTime` can be used.
+
 ### AWS Lambda
 
 If 'process.env.AWS_LAMBDA_FUNCTION_NAME' is set, then the 'host' tag is set to "lambda" and the 'lambdaFunction' tag is set to the name of the lambda function.

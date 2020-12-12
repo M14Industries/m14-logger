@@ -1,6 +1,6 @@
 const assert = require('assert');
 
-describe("index.js", function() {
+describe("Logger can console.log values", function() {
 
 	beforeEach(function() {
 		delete process.env.AWS_LAMBDA_FUNCTION_NAME;

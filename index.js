@@ -17,12 +17,33 @@ module.exports = function(injectedConsoleLog, injectedTimestamp) {
 		cloudWatchLog("measure", property, value + "ms", tags);
 	}
 
-	function cloudWatchLog(type, property, value, tags) {
+	function returnCount(property, value, tags) {
+		if (!value) {
+			value = 1;
+		}
+		return cloudWatchLog("count", property, value, tags, true);
+	}
+
+	function returnMeasure(property, value, tags) {
+		return cloudWatchLog("measure", property, value, tags, true);
+	}
+
+	function returnTime(property, value, tags) {
+		return cloudWatchLog("measure", property, value + "ms", tags, true);
+	}
+
+	function cloudWatchLog(type, property, value, tags, returnString) {
 
 		const timestamp = injectedTimestamp || Math.round(new Date().getTime() / 1000);
 		const logTags = getLogTags(tags);
 
-		consoleLog(`MONITORING|${timestamp}|${value}|${type}|${property}|${logTags}`);
+		const logString = `MONITORING|${timestamp}|${value}|${type}|${property}|${logTags}`;
+
+		if (returnString) {
+			return logString;
+		}
+		
+		consoleLog(logString);
 	}
 
 	function getLogTags(tags) {
@@ -67,7 +88,10 @@ module.exports = function(injectedConsoleLog, injectedTimestamp) {
 	return {
 		count,
 		measure,
-		time
+		time,
+		returnCount,
+		returnMeasure,
+		returnTime
 	};
 
 };
